@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đoán số</title>
+</head>
+<body>
+<p>Nhập khoảng bạn muốn đoán</p>
+<input type="number" placeholder="Số đầu" id="FirstNum">
+<input type="number" placeholder="Số cuối" id="SecondNum">
+<button onclick="random()">Chọn</button>
+<p>Nhập số bạn chọn:</p>
+<input type="number" id="myIndex" placeholder="Nhập số bạn muốn đoán">
+<button onclick="play()">Đoán</button>
+<br><br>
+<button onclick="Reset()">Chơi lại</button>
+</body>
+<script>
+    let Num
+    let dem = 1
+
+    function random() {
+        let FirstNum = parseInt(document.getElementById('FirstNum').value)
+        let SecondNum = parseInt(document.getElementById('SecondNum').value)
+        let khoangChay = (SecondNum - FirstNum) + 1
+        let number = Math.floor(Math.random() * khoangChay) + FirstNum
+        num = number
+    }
+
+    function play() {
+        let myIndex = parseInt(document.getElementById('myIndex').value);
+
+        if (dem > 3) {
+            alert('Bạn đã đoán sai quá 3 lần!')
+        } else {
+            if (num === myIndex) {
+                alert('Đúng')
+            } else if (num > myIndex) {
+                alert("Đoán số lớn hơn đi");
+                dem++;
+            } else {
+                alert("Đoán số nhỏ hơn đi");
+                dem++;
+            }
+        }
+    }
+
+    function Reset() {
+        dem = 1;
+        document.getElementById('FirstNum').value = ''
+        document.getElementById('SecondNum').value = ''
+        document.getElementById('myIndex').value = ''
+    }
+
+
+</script>
+</html>
